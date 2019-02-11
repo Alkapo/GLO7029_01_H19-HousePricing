@@ -20,12 +20,28 @@ class Handeler():
         return self.data.columns.values.tolist()
     def _null(self):
         return self.data.isnull().sum()
+    def _drop(self):
+
+        l_drop = self.data.columns[self.data.isnull().any()].tolist()
+        for x in l_drop:
+            self.data = self.data.drop([x],axis=1)
+        self.data = self.data.drop(["Id"],axis=1)
+
+        return self.data
 
 
+#This section is for test and by default it load data
 if __name__ == '__main__':
     file = Handeler()
     path = "C:/Users/ali_a/Desktop/HIV-2019/GLO-7030_Deep_Learning/data/train.csv"
     out = file.inputs(path)
-    out = file._variabls()
-    print("the number of variables that we have is : ",len(out))
-    print(np.where())
+    #Test du commit pycharm
+    #out = file._variabls()
+    print("the number of variables that we have is : ",out)
+    print(file._null()!=0)
+
+    out = file._drop()
+    print("the number of variables that we have is : ",out)
+
+
+
