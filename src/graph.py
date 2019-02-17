@@ -53,8 +53,18 @@ lb_style = LabelBinarizer()
 lb_results = lb_style.fit_transform(obj_df["Hou"])
 pd.DataFrame(lb_results, columns=lb_style.classes_).head()
 '''
-sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
-#sns.kdeplot(out['1stFlrSF'],out["HouseStyle"].cat.codes);
-plt.title("La superficie de la maison en fonction du prix")
-plt.show()
+
+for x in (out.columns):
+    if out[x].dtypes == "object":
+        out[x]= out[x].astype('category')
+        print("|", x ,"|" , out[x].cat.categories)
+
+
+
+
+
+#Le nombre détage affect t-il le prix ?
+#sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
+#plt.title("La superficie de la maison en fonction du prix")
+#plt.show()
 
