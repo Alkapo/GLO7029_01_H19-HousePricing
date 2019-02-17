@@ -3,8 +3,10 @@ import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
-import time
+import seaborn as sns
+
 from DataStat import Handeler
+
 from pathlib import Path
 
 def correlation(data):
@@ -39,13 +41,13 @@ if __name__ == '__main__':
     # principal attributs
     price = out[['SalePrice', 'YrSold']]
     # boxplot
-    price.boxplot(by="YrSold", column="SalePrice")
-    matrixplot(price)
+    #price.boxplot(by="YrSold", column="SalePrice")
+    #matrixplot(price)
 
     # principal attributs
     general = out[['Id', 'SalePrice', 'YearBuilt', 'LotArea', 'OverallCond', 'OverallQual', 'YrSold']]
-    correlation(general)
-    matrixplot(general)
+    #correlation(general)
+    #matrixplot(general)
 
     # Localisation
     zone = out[['Id', 'SalePrice', 'MSZoning', 'LotFrontage', 'Street', 'Alley', 'Neighborhood', 'Condition1', 'Condition2']]
@@ -94,7 +96,9 @@ if __name__ == '__main__':
 
     # sale
     sale = out[['Id', 'SalePrice', 'MoSold', 'YrSold', 'SaleType', 'SaleCondition']]
-    #correlation(sale)
+    correlation(sale)
 
     # others
     others = out[[]]
+
+
