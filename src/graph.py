@@ -4,12 +4,14 @@ import pandas as pd
 from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
+import scipy as sp
 from scipy.stats import norm
 from sklearn.preprocessing import LabelBinarizer
 
 import datetime
 from DataStat import Handeler
 from pathlib import Path
+
 
 #Set à indiquer que tout les plt sont de type Seaborn.
 sns.set()
@@ -48,13 +50,13 @@ print(SaleCorr)
 
 #General information on the sale satisfaction
 
-''' 
+'''
 SaleCondition: Condition of sale
 
        Normal  Normal Sale
        Abnorml Abnormal Sale -  trade, foreclosure, short sale
        AdjLand Adjoining Land Purchase
-       Alloca  Allocation - two linked properties with separate deeds, typically condo with a garage unit 
+       Alloca  Allocation - two linked properties with separate deeds, typically condo with a garage unit
        Family  Sale between family members
        Partial Home was not completed when last assessed (associated with New Homes)
 '''
@@ -114,7 +116,27 @@ plt.show()
 
 
 
-# sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
-# plt.title("La superficie de la maison en fonction du prix")
-# plt.show()
-#
+sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
+
+
+
+# Calcul de distance entre toutes les variables pour étudier leurs aproximité et leurs similattité
+#print(out["HouseStyle"].max())
+Y = sp.spatial.distance.pdist(out, 'kulsinski')
+import plotly as py
+py.tools.set_credentials_file('Alkapo', 'FiJm3k1B3X7eXKvnwTRq')
+import plotly.plotly as py
+import plotly.figure_factory as ff
+
+dendro = ff.create_dendrogram(pd.DataFrame(Y[1:100]))
+dendro['layout'].update({'width':800, 'height':500})
+py.plot(dendro, filename='simple_dendrogram')
+
+
+
+
+#Un plot pout voir la pertiance des données en fonction des catégories vides
+sns.catplot(x="1stFlrSF", jitter=False, data=out);
+
+plt.title("La superficie de la maison en fonction du prix")
+plt.show()
