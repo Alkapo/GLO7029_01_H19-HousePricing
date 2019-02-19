@@ -103,18 +103,18 @@ plt.show()
 out.info()
 
 #Le nombre détage affect t-il le prix ?
-# out["1stFlrSF"] = out["1stFlrSF"].astype('category')
-# #x="1stFlrSF", kind="count", palette="ch:2.5,-.2,dark=.3", data=out
-# plt.hist(out["1stFlrSF"]);
+out["1stFlrSF"] = out["1stFlrSF"].astype('category')
+#x="1stFlrSF", kind="count", palette="ch:2.5,-.2,dark=.3", data=out
+plt.hist(out["1stFlrSF"]);
 # plt.title("L'influence du nombre d'étage sur le prix de la maison- 1stFlrSF",  fontsize = 24)
 # plt.xlabel("Catégorie",fontsize=18)
 # plt.ylabel('Nombre de maison', fontsize=16)
 # plt.savefig('../figures/NbEtage_1stFlrSF.png')
-# plt.show()
-
-
-
-sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
-plt.title("La superficie de la maison en fonction du prix")
 plt.show()
 
+
+
+# sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
+# plt.title("La superficie de la maison en fonction du prix")
+# plt.show()
+#
