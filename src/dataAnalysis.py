@@ -41,8 +41,8 @@ if __name__ == '__main__':
     # principal attributs
     price = out[['SalePrice', 'YrSold']]
     # boxplot
-    #price.boxplot(by="YrSold", column="SalePrice")
-    #matrixplot(price)
+    price.boxplot(by="YrSold", column="SalePrice")
+    matrixplot(price)
 
     # principal attributs
     general = out[['Id', 'SalePrice', 'YearBuilt', 'LotArea', 'OverallCond', 'OverallQual', 'YrSold']]

@@ -11,13 +11,15 @@ import datetime
 from DataStat import Handeler
 from pathlib import Path
 
-
+#Set à indiquer que tout les plt sont de type Seaborn.
 sns.set()
-# data import
 
+# data import
 df = Handeler()
 out = df.inputs('../data/train.csv')
 
+
+''' Les sections sont fait en fonction du rapport ! '''
 #Infor on type of variable
 out.info()
 
@@ -28,7 +30,18 @@ plt.title('La distribution des prix - SalePrice',  fontsize = 24)
 plt.xlabel('Prix ($)',fontsize=18)
 plt.yticks(g.get_yticks(), (g.get_yticks() * 10000000).round(decimals=0))
 plt.ylabel('Distribution [%]', fontsize=16)
+plt.savefig('../figures/SalePriceDist.png')
 plt.show()
+
+
+# Print les variables importantes
+SalePriceCorr = out.corr()['SalePrice']
+SalePriceCorr = pd.DataFrame(SalePriceCorr)
+SalePriceCorr.columns = ['Correlation']
+SaleCorr = SalePriceCorr.sort_values(by=['Correlation'], ascending=False)
+sns.heatmap(SalePriceCorr)
+plt.show
+print(SaleCorr)
 
 
 
@@ -80,7 +93,7 @@ for name in (out.columns):
 cat = out.select_dtypes(include=['category']).columns
 f = pd.melt(out, id_vars=['SalePrice'], value_vars=sorted(cat[1:10]))
 
-g = sns.FacetGrid(f, col='variable', col_wrap=3, sharex=False, sharey=True, size=3)
+g = sns.FacetGrid(f, col='variable', col_wrap=3, sharex=False, sharey=True, size=2.6)
 g = g.map(sns.boxplot, 'value', 'SalePrice')
 [plt.setp(ax.get_xticklabels(), rotation=90) for ax in g.axes.flat]
 g.fig.tight_layout()
@@ -90,7 +103,18 @@ plt.show()
 out.info()
 
 #Le nombre détage affect t-il le prix ?
-# sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
-# plt.title("La superficie de la maison en fonction du prix")
+# out["1stFlrSF"] = out["1stFlrSF"].astype('category')
+# #x="1stFlrSF", kind="count", palette="ch:2.5,-.2,dark=.3", data=out
+# plt.hist(out["1stFlrSF"]);
+# plt.title("L'influence du nombre d'étage sur le prix de la maison- 1stFlrSF",  fontsize = 24)
+# plt.xlabel("Catégorie",fontsize=18)
+# plt.ylabel('Nombre de maison', fontsize=16)
+# plt.savefig('../figures/NbEtage_1stFlrSF.png')
 # plt.show()
+
+
+
+sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
+plt.title("La superficie de la maison en fonction du prix")
+plt.show()
 
