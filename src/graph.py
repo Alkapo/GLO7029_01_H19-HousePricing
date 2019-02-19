@@ -119,19 +119,19 @@ plt.show()
 sns.factorplot(x = "1stFlrSF", y = "SalePrice", hue = "HouseStyle", kind = 'violin', col = "HouseStyle", data = out)
 
 
-
-# Calcul de distance entre toutes les variables pour étudier leurs aproximité et leurs similattité
-#print(out["HouseStyle"].max())
-Y = sp.spatial.distance.pdist(out, 'kulsinski')
-import plotly as py
-py.tools.set_credentials_file('Alkapo', 'FiJm3k1B3X7eXKvnwTRq')
-import plotly.plotly as py
-import plotly.figure_factory as ff
-
-dendro = ff.create_dendrogram(pd.DataFrame(Y[1:100]))
-dendro['layout'].update({'width':800, 'height':500})
-py.plot(dendro, filename='simple_dendrogram')
-
+#
+# # Calcul de distance entre toutes les variables pour étudier leurs aproximité et leurs similattité
+# #print(out["HouseStyle"].max())
+# Y = sp.spatial.distance.pdist(out, 'kulsinski')
+# import plotly as py
+# py.tools.set_credentials_file('Alkapo', 'FiJm3k1B3X7eXKvnwTRq')
+# import plotly.plotly as py
+# import plotly.figure_factory as ff
+#
+# dendro = ff.create_dendrogram(pd.DataFrame(Y[1:100]))
+# dendro['layout'].update({'width':800, 'height':500})
+# py.plot(dendro, filename='simple_dendrogram')
+#
 
 
 
