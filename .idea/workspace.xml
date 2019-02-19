@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f79fb4dd-8278-402b-b711-55bf6073bd34" name="Default" comment="Commit 5.0 Ajout de simple graph et deput rapport">
+    <list default="true" id="f79fb4dd-8278-402b-b711-55bf6073bd34" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Rappor/Rapport 2 - Données V1.docx" afterPath="$PROJECT_DIR$/Rappor/Rapport 2 - Données V1.docx" />
-      <change beforePath="$PROJECT_DIR$/src/dataAnalysis.py" afterPath="$PROJECT_DIR$/src/dataAnalysis.py" />
-      <change beforePath="$PROJECT_DIR$/src/graph.py" afterPath="$PROJECT_DIR$/src/graph.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -328,7 +325,8 @@
     <MESSAGE value="Commit 3.0" />
     <MESSAGE value="Commit 4.0 Adjut on categories graphs" />
     <MESSAGE value="Commit 5.0 Ajout de simple graph et deput rapport" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 5.0 Ajout de simple graph et deput rapport" />
+    <MESSAGE value="Commit Rapport et graph" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit Rapport et graph" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
