@@ -20,7 +20,7 @@ sns.set()
 df = Handeler()
 out = df.inputs('../data/train.csv')
 
-
+print(out.head(1))
 ''' Les sections sont fait en fonction du rapport ! '''
 #Infor on type of variable
 out.info()
